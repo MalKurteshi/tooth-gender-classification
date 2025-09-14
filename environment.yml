@@ -1,0 +1,15 @@
+name: tooth-gender-classification
+channels:
+  - defaults
+dependencies:
+  - python=3.9
+  - pandas
+  - numpy
+  - openpyxl
+  - scikit-learn
+  - matplotlib
+  - seaborn
+  - jupyter
+  - pip
+  - pip:
+    # Add any pip-only packages here if needed
