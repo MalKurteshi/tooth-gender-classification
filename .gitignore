@@ -7,15 +7,13 @@ __pycache__/
 dist/
 build/
 .eggs/
-# Jupyter Notebooks
-.ipynb_checkpoints
 # Data
-data/
-*.csv
-*.tsv
-*.xlsx
-*.xls
-*.h5
+#data/
+#*.csv
+#*.tsv
+#*.xlsx
+#*.xls
+#*.h5
 # Environment
 .env
 .venv/
