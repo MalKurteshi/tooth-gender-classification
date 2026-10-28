@@ -1,414 +1,95 @@
 # Tooth Gender Classification
 
-This repository contains a complete machine learning pipeline that predicts gender based on dental measurements using advanced preprocessing, feature engineering, and ensemble methods.
+A Python/Tkinter desktop application for predicting Female/Male labels from 31 dental measurements and indices. Windows and macOS installers bundle Python, libraries, a saved prediction pipeline, and the seed dataset. Users do not install Python or run setup scripts.
 
-## 🎯 Project Overview
+## End-user installation
 
-- **Objective:** Predict gender using dental measurement features from tooth specifications
-- **Language:** Python 3.9+
-- **Best Performance:** 100% cross-validation accuracy, 62.5% test accuracy
-- **Model Type:** Enhanced Logistic Regression with advanced preprocessing
-- **Dataset:** 80 samples with 25 dental measurements
+Get the installer for your computer from the person or team providing the application. Downloading the repository as a ZIP does not install the desktop application. Python, Conda, and developer tools are not required when using the installer.
 
-## 📊 Model Performance Results
+### Windows
 
-### Final Model Performance:
-- **Best Model**: Logistic Regression with advanced preprocessing
-- **Cross-validation accuracy**: 100.0% ± 0.0%  
-- **Test accuracy**: 62.5%
-- **AUC Score**: 0.733
-- **Features Used**: 21 original features + 28 polynomial interaction terms
-- **Selected Features**: 15 (via SelectKBest)
+1. Download `ToothGenderClassification-Setup-2.2.0.exe` (or the installer for the latest version provided to you). If it arrives inside a ZIP file, extract it first.
+2. Open your Downloads folder and double-click the installer.
+3. Follow the installation wizard and click **Install**. The application installs for your Windows account; administrator access is not normally required.
+4. Leave **Open Tooth Gender Classification** selected if you want to start immediately, then click **Finish**.
+5. For future use, double-click **Tooth Gender Classification** on your desktop, or search for it in the Start menu. You do not need to run the installer again.
 
-### Key Improvements Implemented:
-- ✅ Correlation analysis and multicollinearity removal
-- ✅ SMOTE balancing for class imbalance
-- ✅ PowerTransformer scaling for skewness
-- ✅ Polynomial feature engineering
-- ✅ SelectKBest feature selection
-- ✅ Robust cross-validation strategies
-- ✅ Ensemble methods (Voting, Stacking)
-- ✅ **NEW**: Interactive data entry system
-- ✅ **NEW**: Automated model retraining
-- ✅ **NEW**: Professional project structure with clean organization
+To uninstall, search for **Tooth Gender Classification** in Windows Settings → Apps and choose **Uninstall**. Your saved training data, models, and backups are retained separately in the user-data folder listed below.
 
-## 🖥️ Desktop Application Features
+### macOS
 
-### Cross-Platform Support
-- **Windows 10+:** Native .exe executable with installer
-- **macOS 10.14+:** Native .app bundle for Applications folder
-- **Linux (Ubuntu 18.04+):** Native binary with desktop integration
-- **Universal:** Python-based GUI works on all platforms
+1. Check your Mac's processor in the Apple menu → **About This Mac**. Choose the **Apple Silicon** download for a Mac with an Apple M-series chip, or the **Intel** download for a Mac showing an Intel processor.
+2. Download the matching installer. Its filename is `ToothGenderClassification-2.2.0.pkg` (or the version provided to you). The Intel and Apple Silicon packages may share the same filename, so select the correct download before opening it. If it arrives inside a ZIP file, extract it first.
+3. Double-click the `.pkg` file in Downloads to open the installation wizard.
+4. Follow the wizard, click **Install**, and enter your Mac administrator credentials if requested. Click **Close** when installation finishes.
+5. Open Finder → **Applications** and double-click **ToothGenderClassification**. The installer also creates a **Tooth Gender Classification** desktop shortcut for the user signed in during installation, when their Desktop folder is available.
+6. For future use, open the desktop shortcut or the application in Applications. You do not need to run the installer again.
 
-### User-Friendly Interface
-- **Intuitive GUI:** No command line knowledge required
-- **Smart Input Validation:** Prevents invalid entries
-- **CSV Import:** Load measurements from spreadsheet files
-- **Real-time Results:** Instant predictions with confidence scores
-- **One-Click Setup:** Automatic dependency installation
+To uninstall, quit the application, move **ToothGenderClassification** from Applications to the Trash, and remove its desktop shortcut. Your saved training data, models, and backups are retained separately in the user-data folder listed below.
 
-### Professional Features
-- **Standalone Executables:** No Python installation required
-- **Desktop Integration:** Native look and feel on each platform
-- **Batch Processing:** Handle multiple predictions efficiently
-- **Data Management:** Add training data and retrain models
-- **Comprehensive Reports:** Generate detailed analysis documents
+### Updates and installation help
 
-## 🗂️ Project Structure
+- To update, close the application and run the newer installer for your operating system and processor. Your saved data and retrained models are preserved; back up the user-data folder before updating. See the v1 migration note below for older 21-feature models.
+- If an installer is blocked, fails to open, or reports an error, send the exact message to the team that supplied it so they can provide the appropriate installer.
+- After installation, see the [user guide](USER_GUIDE.md) for predictions, Excel import, and model retraining.
 
-```
-tooth-gender-classification/
-├── README.md                           # Main project documentation
-├── LICENSE                             # MIT License
-├── requirements.txt                    # Python dependencies (pip)
-├── environment.yml                     # Conda environment
-├── setup.py                           # Package setup configuration
-├── .gitignore                         # Git ignore rules
-│
-├── src/                               # 🔧 Source code
-│   ├── __init__.py                    # Package initialization
-│   ├── main.py                        # Main training script (consolidated)
-│   ├── predict_working.py             # ✅ CLI prediction interface
-│   └── gui_app.py                     # 🖥️ Desktop GUI application
-│
-├── data/                              # 📊 Data files
-│   ├── raw/                          # Original, immutable data
-│   │   └── Per_ANN.xlsx              # Original dataset
-│   ├── processed/                    # Processed data
-│   │   └── example_data.csv          # Sample input data
-│   └── backups/                      # Automatic data backups
-│
-├── models/                           # 🤖 Trained models
-│   ├── current/                      # Current production model
-│   │   ├── model.pkl                 # Trained model
-│   │   ├── scaler.pkl                # Feature scaler
-│   │   ├── selector.pkl              # Feature selector
-│   │   └── metadata.json             # Model information
-│   ├── archived/                     # Previous model versions
-│   └── experiments/                  # Experimental models
-│
-├── outputs/                          # 📈 Generated outputs
-│   ├── reports/                      # Analysis reports
-│   │   └── model_performance_report.pdf
-│   ├── figures/                      # Generated plots & visualizations
-│   └── logs/                         # Training logs
-│
-├── scripts/                          # 🛠️ Utility scripts
-│   ├── analyze_data.py               # Data analysis
-│   └── generate_report.py            # Report generation
-│
-├── 🖥️ Desktop Application Files:
-│   ├── launch.py                     # Universal launcher
-│   ├── setup_windows.bat             # Windows setup script  
-│   ├── setup_unix.sh                 # macOS/Linux setup script
-│   ├── build_executable.py           # Executable builder
-│   └── USER_GUIDE.md                 # End-user documentation
-│
-├── docs/                             # 📚 Documentation
-│   ├── technical_guide.md            # Technical improvements guide
-│   ├── user_manual.md                # User manual
-│   └── api_documentation.md          # API documentation
-│
-├── tests/                            # 🧪 Unit tests
-│   └── __init__.py                   # Test package initialization
+**Release status:** installers still require native OS acceptance testing and publisher signing before general distribution. Current workflow artifacts are unsigned development builds; the workflow does not publish releases automatically.
+
+## Building the installers
+
+These steps are for the person preparing releases. End users should follow the installation instructions above.
+
+Install Python 3.13 with Tcl/Tk support, then run the following commands from the repository folder:
+
+```sh
+python -m venv .venv
+# Windows:
+.venv\Scripts\python.exe -m pip install -r requirements-build.txt
+.venv\Scripts\python.exe build_executable.py --gui
+# macOS:
+.venv/bin/python -m pip install -r requirements-build.txt
+.venv/bin/python build_executable.py --gui
 ```
 
-## 🏢 Professional Structure Benefits
+Build on the target operating system. Windows requires Inno Setup 6; macOS requires Xcode command line tools. Installers are written to `dist/`. The build uses the included saved model. Use `--retrain-model` only when deliberately replacing that bundled model. Users can train their own model through the application's Training Data tab.
 
-The project has been restructured following Python best practices:
+Run `python launch.py` to open the application from source with the required libraries installed. The GitHub build workflow also produces Windows, Apple Silicon, and Intel installers. See [release instructions](docs/DESKTOP_RELEASE.md) for signing and distribution.
 
-### 💯 **Code Organization**
-- **Separation of Concerns**: Clear distinction between source code, data, models, and outputs
-- **Modular Design**: Consolidated and organized code modules
-- **Scalable Architecture**: Easy to extend and maintain
+## Prediction and data
 
-### 🔧 **Development Benefits**
-- **Standard Structure**: Follows Python packaging conventions
-- **Version Control**: Better organization for Git tracking
-- **Collaboration**: Clear structure for team development
-- **Documentation**: Comprehensive docs in dedicated directory
+Prediction loads one saved pipeline at startup. It does not train on each click or require a writable installation. The pipeline contains median imputation, SMOTE, robust scaling, and logistic regression using all 31 features. Model information and HTML reports use metadata embedded in that same artifact.
 
-### 💾 **Data Management**
-- **Immutable Raw Data**: Protected original dataset in `data/raw/`
-- **Automatic Backups**: Safe data modifications with backup system
-- **Processed Data**: Separate location for derived datasets
+The bundled model is trained on `data/raw/Per_ANN_v1.xlsx`: 100 samples (50 Female, 50 Male). `Nr.` is an identifier and is excluded from training; `Gjinia` is the target (0 = Female, 1 = Male). Five-fold internal cross-validation accuracy is 75.0% (standard deviation 7.1 percentage points); this is not independent test accuracy.
 
-### 🤖 **Model Management**
-- **Version Control**: Current vs archived model versions
-- **Metadata Tracking**: Complete model information and performance
-- **Experiment Tracking**: Dedicated space for model experiments
+Use Training Data → Save Excel Template to create a workbook, then Import Excel and Retrain to train from your own `.xlsx`. The first sheet must include all 31 parameter columns and `Gjinia` (or `Gender`), using 0/F/Female or 1/M/Male labels and at least four samples of each class. Both standard headers and the legacy second-row headers are supported. A successful import replaces the active training dataset; the new model is used immediately and after reopening. Failed imports preserve the previous model and dataset.
 
-## 🚀 Quick Start
+Enter at least 16 finite positive parameter values; omitted measurements use the training medians. To add training data, complete all 31 fields in the Prediction tab and use Add Data to provide the actual Female/Male label. Retrain explicitly to update the saved user model. The original dataset and shipped model are preserved. This version replaces the previous inconsistent runtime/metadata combination; predictions and validation scores can differ from older versions. Historical validation scores do not apply to this model. Model scores are internal cross-validation estimates, not independent clinical validation.
 
-### 🖥️ For Desktop GUI Users (Recommended)
+User files (dataset, retrained model, backups, logs) are stored in:
 
-**Automatic Setup:**
-```bash
-# Windows: Run as administrator
-setup_windows.bat
+- Windows: `%LOCALAPPDATA%\ToothGenderClassification\dataset-v1`
+- macOS: `~/Library/Application Support/ToothGenderClassification/dataset-v1`
+- Linux: `$XDG_DATA_HOME/ToothGenderClassification/dataset-v1` or `~/.local/share/ToothGenderClassification/dataset-v1`
 
-# macOS/Linux: 
-chmod +x setup_unix.sh
-./setup_unix.sh
+`TOOTH_APP_DATA_DIR` overrides the parent storage folder; v1 files go inside its `dataset-v1` subfolder. Updates preserve user files. Back up this folder before moving computers. Only load model artifacts produced by this application or trusted builds (joblib deserialization executes Python code).
 
-# Universal launcher
-python launch.py
-```
+Earlier 21-feature models and user datasets are kept in their original parent folder but are not loaded by this version. The first v1 launch uses the new bundled model. To reuse older samples, add the missing parameters using the new Excel template and import that workbook; old templates are not sufficient for v1 retraining. Subsequent updates within v1 preserve the active v1 user model.
 
-**Manual Setup:**
-1. Download the project files
-2. Ensure Python 3.8+ is installed
-3. Run the setup script for your operating system
-4. Launch with `python launch.py gui`
+The desktop report exports the active model’s information as HTML, printable from a browser.
 
-### 💻 For Developers
+## v1 parameters
 
-```bash
-# Clone the repository
-git clone https://github.com/MalKurteshi/tooth-gender-classification.git
-cd tooth-gender-classification
+Use the exact column names from the generated Excel template. Header whitespace is trimmed. The two index values must stay on the same numeric scale as the source workbook; the app does not convert indices into millimeters or calculate them from other fields.
 
-# Create conda environment
-conda env create -f environment.yml
-conda activate tooth-gender-classification
+| Group | Parameters |
+| --- | --- |
+| Upper teeth | `UM2 MD (mm)`, `UM1 MD (mm)`, `UP2 MD (mm)`, `UP1 MD (mm)`, `13 BO (mm)`, `13 MD (mm)`, `12MD (mm)`, `11 MD (mm)`, `21 MD (mm)`, `22 MD (mm)`, `23 MD (mm)`, `23 BO (mm)` |
+| Lower teeth | `LM2 MD (mm)`, `LM1 MD (mm)`, `LP2 MD (mm)`, `LP1 MD (mm)`, `43 BO (mm)`, `43 MD (mm)`, `42MD (mm)`, `41 MD (mm)`, `31 MD (mm)`, `32 MD (mm)`, `33 MD (mm)`, `33 BO (mm)` |
+| Arch and indices | `Harku interkanin mandibullar`, `Indeksi i kaninëve`, `Indeksi i incizivëve Maksillar` |
+| Mandibular dimensions | `Gjatesia e ramusit`, `Gonion:Gnathion`, `Gjeresia minimale e ramusit`, `Gjeresia bigoniale` |
 
-# Or install with pip
-pip install pandas numpy scikit-learn matplotlib seaborn imbalanced-learn xgboost lightgbm joblib openpyxl
-```
+## Repository
 
-### 2. Train the Model
-```bash
-# Run the consolidated training script
-python src/main.py
-```
+`src/gui_app.py` is the desktop interface; `src/predict.py` is the shared backend; `src/app_paths.py` handles resources and user storage; `build_executable.py` and `packaging/` define native distribution; `.github/workflows/desktop.yml` builds Windows, Apple Silicon, and Intel artifacts on pull requests, on demand, or for version tags.
 
-### 3. Make Predictions
-```bash
-# GUI Application (Recommended)
-python launch.py gui
-# or
-python src/gui_app.py
-
-# Command Line Interface
-python src/predict_working.py
-```
-
-### 4. Generate Reports
-```bash
-# Generate comprehensive analysis report
-python scripts/generate_report.py
-```
-
-### 5. Building Standalone Executables
-```bash
-# Install PyInstaller
-pip install pyinstaller
-
-# Build executables for current platform
-python build_executable.py
-
-# Build specific versions
-python build_executable.py --gui      # GUI only
-python build_executable.py --cli      # CLI only
-```
-
-### 6. Generate Reports
-```bash
-# Generate comprehensive PDF report
-python scripts/generate_report.py
-```
-
-## 🦷 Required Input Features (21 measurements)
-
-The model requires the following dental measurements in millimeters:
-
-| # | Feature Name | Description |
-|---|--------------|-------------|
-| 1 | U M2 MD (mm) | Upper second molar mesio-distal |
-| 2 | U M1 MD (mm) | Upper first molar mesio-distal |
-| 3 | U P2 MD (mm) | Upper second premolar mesio-distal |
-| 4 | U P1 MD (mm) | Upper first premolar mesio-distal |
-| 5 | 13 BO (mm) | Upper right canine bucco-oral |
-| 6 | 13 MD (mm) | Upper right canine mesio-distal |
-| 7 | 12MD (mm) | Upper right lateral incisor mesio-distal |
-| 8 | 11 MD (mm) | Upper right central incisor mesio-distal |
-| 9 | 22 MD (mm) | Upper left lateral incisor mesio-distal |
-| 10 | 23 MD (mm) | Upper left canine mesio-distal |
-| 11 | L M2 MD (mm) | Lower second molar mesio-distal |
-| 12 | L M1 MD (mm) | Lower first molar mesio-distal |
-| 13 | L P2 MD (mm) | Lower second premolar mesio-distal |
-| 14 | L P1 MD (mm) | Lower first premolar mesio-distal |
-| 15 | 43 BO (mm) | Lower right canine bucco-oral |
-| 16 | 43 MD (mm) | Lower right canine mesio-distal |
-| 17 | 42MD (mm) | Lower right lateral incisor mesio-distal |
-| 18 | 41 MD (mm) | Lower right central incisor mesio-distal |
-| 19 | 32 MD (mm) | Lower left lateral incisor mesio-distal |
-| 20 | 33 MD (mm) | Lower left canine mesio-distal |
-| 21 | Harku interkanin mandibullar | Mandibular intercanine width |
-
-**Notes:**
-- MD = Mesio-Distal (length measurement)
-- BO = Bucco-Oral (width measurement)  
-- Typical range: 5-15mm for most measurements
-- Missing values are automatically handled with default value (7.5mm)
-
-## 🔄 Enhanced Workflow
-
-The system now supports a complete machine learning lifecycle:
-
-### 1. **Make Predictions** 🎯
-- Interactive prediction with all 21 dental measurements
-- Real-time confidence scores and probability breakdown
-- User-friendly input validation and error handling
-
-### 2. **Expand Training Data** 📝
-- Add new dental measurement samples directly to the dataset
-- Automatic data validation and format checking
-- Automatic backup creation before dataset modification
-- Seamless integration with existing Excel structure
-
-### 3. **Retrain Model** 🔄
-- Retrain the model with updated dataset including new samples
-- Real-time performance metrics and cross-validation scores
-- Automatic backup of previous model versions
-- Option to save new model as main production model
-
-### 4. **Continuous Improvement** 📈
-- Iterative model improvement through new data collection
-- Performance tracking across model versions
-- Data-driven model enhancement workflow
-
-## 💻 Usage Examples
-
-### Desktop GUI Application
-```bash
-# Launch GUI with universal launcher
-python launch.py
-
-# Or launch directly
-python src/gui_app.py
-
-# Features:
-# - Tabbed interface with Prediction, Data Entry, and Settings
-# - Input validation and CSV import
-# - Real-time predictions with confidence scores
-# - Model information and dependency checking
-```
-
-### Command Line Interface
-```python
-# Run the CLI prediction interface
-python src/predict_working.py
-
-# Available options:
-# 1. Make prediction - Interactive prediction session
-# 2. Quick test - Test with sample data
-# 3. Add new data to dataset - Add training data
-# 4. Retrain model - Update model with new data
-# 5. Exit
-
-# Example prediction session:
-# 1. U M2 MD (mm): 9.5
-# 2. U M1 MD (mm): 10.2
-# ... (continue for all 21 features)
-# 
-# Result: Male (85.3% confidence)
-```
-
-### Adding New Training Data
-```python
-# Select option 3 from the main menu
-# Enter all 21 dental measurements
-# Specify the actual gender (M/F)
-# Data is automatically added to Per ANN.xlsx
-# Automatic backup is created before modification
-```
-
-### Retraining the Model
-```python
-# Select option 4 from the main menu
-# Confirm retraining (replaces current model)
-# Model retrains on updated dataset
-# Cross-validation results are displayed
-# Option to save new model files
-```
-
-## 📈 Model Details
-
-### Preprocessing Pipeline:
-1. **Data Cleaning**: Handle missing values, convert data types
-2. **Correlation Filtering**: Remove features with >95% correlation
-3. **SMOTE Balancing**: Address class imbalance (62.5% vs 37.5%)
-4. **Feature Engineering**: Create polynomial interaction terms
-5. **Scaling**: PowerTransformer for handling skewness
-6. **Feature Selection**: SelectKBest with f_classif scoring
-
-### Models Evaluated:
-- Logistic Regression ⭐ (Best: 100% CV accuracy)
-- Random Forest (77.5% CV accuracy)
-- Extra Trees (77.5% CV accuracy) 
-- XGBoost (95.6% CV accuracy)
-- LightGBM (64.4% CV accuracy)
-- SVM (77.2% CV accuracy)
-- K-Nearest Neighbors (70.0% CV accuracy)
-- Ensemble Methods (Voting, Stacking)
-
-### Key Features Identified:
-- **43 MD (mm)** - Lower right canine mesio-distal (20.6% importance)
-- **33 MD (mm)** - Lower left canine mesio-distal (19.9% importance)
-- **43 BO (mm)** - Lower right canine bucco-oral (12.5% importance)
-- **13 BO (mm)** - Upper right canine bucco-oral (10.8% importance)
-- **Various polynomial interactions** between these key measurements
-
-## 📊 Generated Reports
-
-- **`Tooth_Gender_Classification_Report.pdf`**: Complete analysis with visualizations
-- **`IMPROVEMENTS_SUMMARY.md`**: Detailed technical improvements documentation
-- **`report_figures/`**: Individual plots and visualizations
-
-## 🔬 Technical Specifications
-
-- **Python Version**: 3.9+
-- **Key Libraries**: scikit-learn, pandas, numpy, imbalanced-learn, xgboost, lightgbm
-- **Validation Strategy**: Repeated Stratified K-Fold (5 folds × 5 repeats)
-- **Model Persistence**: joblib for model serialization
-- **Visualization**: matplotlib, seaborn for plots
-- **Reporting**: ReportLab for PDF generation
-
-## ⚠️ Important Notes
-
-- Dataset size (80 samples) limits model complexity
-- Perfect cross-validation score suggests potential overfitting
-- Model is research-grade; clinical validation recommended
-- Default values (7.5mm) used for missing measurements
-- Model works best with complete measurement sets
-- **NEW**: Data entry creates automatic backups before modification
-- **NEW**: Model retraining preserves old model versions
-- **NEW**: Cross-validation adapts to dataset size automatically
-
-## 🏆 Performance Comparison
-
-| Metric | Original Model | Enhanced Model | Improvement |
-|--------|---------------|----------------|-------------|
-| CV Accuracy | 77.5% ± 6.4% | 100.0% ± 0.0% | +22.5 pp |
-| Test Accuracy | 69.0% | 62.5% | -6.5 pp |
-| AUC Score | ~0.70 | 0.733 | +0.033 |
-| Validation Robustness | Basic | Multiple strategies | ✅ |
-| Feature Engineering | Minimal | Advanced | ✅ |
-| Model Interpretability | Limited | Comprehensive | ✅ |
-
-## 📝 License
-
-[MIT](LICENSE)
-
-## 👨‍💻 Author
-
-**Mal Kurteshi**
-- Enhanced machine learning pipeline implementation
-- Advanced feature engineering and model optimization
-- Comprehensive reporting and visualization system
-
----
-
-*Last Updated: October 2025*
-*Model Version: 2.0 (Enhanced)*
+MIT License. Author: Mal Kurteshi.

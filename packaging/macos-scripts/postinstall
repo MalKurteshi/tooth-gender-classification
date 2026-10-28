@@ -1,0 +1,12 @@
+#!/bin/bash
+# Installer runs as root. Create a shortcut for the logged-in desktop user only.
+set -eu
+console_user=$(/usr/bin/stat -f '%Su' /dev/console)
+case "$console_user" in root|loginwindow|_mbsetupuser) exit 0 ;; esac
+user_home=$(/usr/bin/dscl . -read "/Users/$console_user" NFSHomeDirectory | /usr/bin/cut -d ' ' -f 2-)
+shortcut="$user_home/Desktop/Tooth Gender Classification.app"
+if [ -d "$user_home/Desktop" ] && [ ! -e "$shortcut" ] && [ ! -L "$shortcut" ]; then
+    /bin/ln -s '/Applications/ToothGenderClassification.app' "$shortcut"
+    /usr/sbin/chown -h "$console_user" "$shortcut"
+fi
+exit 0

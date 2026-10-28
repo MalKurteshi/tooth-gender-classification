@@ -1,26 +1,16 @@
-# Python
-__pycache__/
-*.py[cod]
-*.so
-*.egg
-*.egg-info/
-dist/
-build/
-.eggs/
-# Data
-#data/
-#*.csv
-#*.tsv
-#*.xlsx
-#*.xls
-#*.h5
-# Environment
-.env
+# Local Python environment and caches
 .venv/
 venv/
-ENV/
-env/
-# OS files
+.env
+__pycache__/
+*.py[cod]
+
+# Installer build products
+build/
+dist/
+*.spec
+
+# Local editor and operating system files
+.vscode/
 .DS_Store
 Thumbs.db
-.vscode/
