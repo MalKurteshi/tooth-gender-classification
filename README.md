@@ -1,6 +1,6 @@
 # Tooth Gender Classification
 
-A Python/Tkinter desktop application for predicting Female/Male labels from 31 dental measurements and indices. Windows and macOS installers bundle Python, libraries, a saved prediction pipeline, and the seed dataset. Users do not install Python or run setup scripts.
+A Python/Tkinter desktop application for predicting Female/Male labels from 31 dental measurements and indices. Windows and macOS installers bundle Python, libraries, a saved prediction pipeline, and the seed dataset. Users do not install Python or run setup scripts. The installed application and desktop shortcuts use a white tooth icon on a teal background.
 
 ## End-user installation
 

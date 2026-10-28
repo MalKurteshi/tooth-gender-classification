@@ -12,13 +12,14 @@ OutputBaseFilename=ToothGenderClassification-Setup-{#AppVersion}
 Compression=lzma2
 SolidCompression=yes
 WizardStyle=modern
+SetupIconFile=..\assets\tooth_icon.ico
 DisableProgramGroupPage=yes
 UninstallDisplayIcon={app}\ToothGenderClassification.exe
 CloseApplications=yes
 [Files]
 Source: "..\dist\ToothGenderClassification\*"; DestDir: "{app}"; Flags: ignoreversion recursesubdirs createallsubdirs
 [Icons]
-Name: "{userdesktop}\{#AppName}"; Filename: "{app}\ToothGenderClassification.exe"
-Name: "{userprograms}\{#AppName}"; Filename: "{app}\ToothGenderClassification.exe"
+Name: "{userdesktop}\{#AppName}"; Filename: "{app}\ToothGenderClassification.exe"; IconFilename: "{app}\ToothGenderClassification.exe"; IconIndex: 0
+Name: "{userprograms}\{#AppName}"; Filename: "{app}\ToothGenderClassification.exe"; IconFilename: "{app}\ToothGenderClassification.exe"; IconIndex: 0
 [Run]
 Filename: "{app}\ToothGenderClassification.exe"; Description: "Open {#AppName}"; Flags: nowait postinstall skipifsilent

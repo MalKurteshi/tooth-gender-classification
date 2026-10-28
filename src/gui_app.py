@@ -50,7 +50,8 @@ class ToothGenderGUI:
                 # For macOS and Linux
                 icon_path = resource_path("assets", "tooth_icon.png")
                 if os.path.exists(icon_path):
-                    self.root.iconphoto(True, tk.PhotoImage(file=icon_path))
+                    self.window_icon = tk.PhotoImage(file=icon_path)
+                    self.root.iconphoto(True, self.window_icon)
         except (tk.TclError, OSError):
             logging.debug("Optional application icon unavailable", exc_info=True)
 

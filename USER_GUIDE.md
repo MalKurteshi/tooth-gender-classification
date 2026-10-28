@@ -1,6 +1,6 @@
 # Desktop user guide
 
-Install the Windows Setup.exe or the macOS .pkg matching your processor. Windows creates Desktop and Start menu shortcuts; macOS installs the application in Applications and creates a desktop shortcut for the signed-in user. Open that icon on subsequent visits. You do not need Python, a terminal, or an internet connection to make predictions.
+Install the Windows Setup.exe or the macOS .pkg matching your processor. Windows creates Desktop and Start menu shortcuts; macOS installs the application in Applications and creates a desktop shortcut for the signed-in user. Look for the white tooth on a teal background and open that icon on subsequent visits. You do not need Python, a terminal, or an internet connection to make predictions.
 
 ## Make a prediction
 

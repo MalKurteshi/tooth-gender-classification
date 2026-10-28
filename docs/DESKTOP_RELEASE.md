@@ -27,3 +27,7 @@ Client data is isolated under `dataset-v1` within the existing application-data 
 ## Verification for 2.2.0
 
 The local checks verified the workbook's 31 headers and 100 samples, the model's input count and source hash, prediction validation, Excel template export, changed predictions after retraining, saved-model reload, rollback on activation failure, later data entry/retraining, and preservation of legacy client files. The GUI was exercised with all 31 fields and its background Excel import flow. The rebuilt macOS app opened successfully; its packaged workbook and model match the source. No test-case files or diagnostic application modes are included in the repository. Windows and Intel macOS builds and publisher signing still require the release environment.
+
+## Application icon
+
+`assets/tooth_icon.svg` is the editable tooth artwork. Pre-generated PNG, ICO, and ICNS files are included so installer builds need no image-conversion libraries. The Windows executable and installer embed the ICO, and Desktop/Start menu shortcuts use the executable's icon. The macOS bundle embeds the ICNS for Finder, Dock, and its desktop shortcut. Tkinter uses the platform-appropriate runtime icon. Rebuild and reinstall to update an existing installation.
